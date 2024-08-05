@@ -1,6 +1,8 @@
+using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 using VeriCode.PageObjects;
+using System.Drawing.Imaging;
 
 namespace VeriCode
 {
@@ -19,9 +21,14 @@ namespace VeriCode
             //ESPERA 
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
 
+            Screenshot screenshot = ((ITakesScreenshot)driver).GetScreenshot();
+            string screenshotPath = "imagens.png";
+           // screenshot.SaveAsFile(screenshotPath, ScreenshotImageFormat.Png); 
+           //ScreenshotImageFormat mesmo usando selenium.webdriver atualizado que inclui esse enum não é reconhecido
+
         }
-       
-    [TearDown]
+
+        [TearDown]
 
         //FECHAR BROWSER DEPOIS DO TESTE CONCLUIDO
         public void FinalizarTeste()
